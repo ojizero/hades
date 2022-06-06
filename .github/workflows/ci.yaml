@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  go-test:
+    name: Go test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18.x
+
+      - name: Get source
+        uses: actions/checkout@v3
+
+      - name: Go test
+        run: go test ./...
+
+  go-vet:
+    name: Go vet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18.x
+
+      - name: Get source
+        uses: actions/checkout@v3
+
+      - name: Go vet
+        run: go vet ./...
+
+  staticcheck:
+    name: Staticcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18.x
+
+      - name: Get source
+        uses: actions/checkout@v3
+
+      - name: Go get staticcheck
+        run: go mod download
+
+      - name: Golint
+        run: go run honnef.co/go/tools/cmd/staticcheck ./...
