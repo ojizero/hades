@@ -13,7 +13,7 @@ type opts struct {
 	log           func(string, ...interface{})
 }
 
-// Option provides the ability to configure the behaviour of `gogracefully'.
+// Option provides the ability to configure the behaviour of `gracefully'.
 type Option func(opts) opts
 
 // StopFunc is a function that stops some service and can be used to
@@ -45,7 +45,7 @@ func AfterShutdown(fs ...StopFunc) Option {
 	}
 }
 
-// WithLogger configures how to log the messages logged by `gogracefully',
+// WithLogger configures how to log the messages logged by `gracefully',
 // defaults to logging using the `fmt' package to the standard errors.
 //
 func WithLogger(l func(string, ...interface{})) Option {
