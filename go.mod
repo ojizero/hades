@@ -1,6 +1,6 @@
 module github.com/ojizero/hades
 
-go 1.18
+go 1.17
 
 require honnef.co/go/tools v0.3.2
 
