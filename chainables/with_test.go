@@ -15,5 +15,7 @@ func ExampleWith() {
 		fmt.Println("This won't be reached in case of error from foo since it is chained after it.")
 		fmt.Printf("If it reached it'll receive the output of foo as an arg -> (%d) <-", i)
 	}
-	chainables.With(foo, bar)
+	if err := chainables.With(foo, bar); err != nil {
+		fmt.Printf("gotten err -> %v", err)
+	}
 }
